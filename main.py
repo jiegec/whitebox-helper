@@ -83,10 +83,10 @@ for index, [stuid, name, github] in enumerate(students):
             subprocess.Popen(["cat", os.path.join(repo, args.file)])
         elif c == "s":
             subprocess.Popen(["git", "--no-pager", "-C", repo,
-                              "log", "--pretty=format:'%h %cd %an %ae %s'"])
+                              "log", "--pretty=format:%h %cd %an %ae %s"])
         elif c == "d":
             subprocess.Popen(
-                ["diff", "-r", "--exclude=\".git\"", repo, args.template])
+                ["diff", "-u", "-w", "-B", "-N", "-d", "-r", "--exclude=\".git\"", repo, args.template])
         elif c == "g":
             while True:
                 print("Give grade here (max 20 points): ")
